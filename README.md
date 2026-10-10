@@ -1,4 +1,4 @@
-# Dome DJ-Prüfapp – V2.3.1 Teststand
+# Dome DJ-Prüfapp – V2.3.2 Teststand
 
 Aufbauend auf V2.2. Bestehende IndexedDB-Daten bleiben erhalten, sofern dieselbe GitHub-Pages-Adresse und derselbe Browser genutzt werden.
 
@@ -17,6 +17,9 @@ Aufbauend auf V2.2. Bestehende IndexedDB-Daten bleiben erhalten, sofern dieselbe
 ## Installation
 Dateien aus diesem ZIP **direkt ins Stammverzeichnis** des bestehenden GitHub-Pages-Repositories laden und vorhandene Dateien überschreiben. Keine Unterordner anlegen. Danach Seite neu laden (Strg+F5), gegebenenfalls nochmals öffnen, damit der neue Service Worker aktiv wird. Vorher zur Sicherheit im Menü „Einstellungen“ alle Bögen als JSON exportieren.
 
-## Korrektur V2.3.1
+## Korrektur V2.3.2
 - Alle vier Bereiche wieder aktiv: Main Stage, Main FOH, Stadl, La Vie.
-- Einmalige Migration schaltet Main FOH auch bei gespeicherter alter Konfiguration frei, ohne Gerätezuordnungen oder Kontrollbögen zu löschen. Danach bleibt die Admin-Einstellung frei änderbar.
+- Einmalige Migration schaltet Main FOH auch bei gespeicherter alter Konfiguration frei, ohne Gerätezuordnungen oder Kontrollbögen zu löschen. Die Aktivierungsoption wurde aus der Admin-Oberfläche entfernt.
+
+- Das Datumsfeld ist vor der Übernahme des Arbeitsplatzes wieder bedienbar.
+- Alle vier Bereiche sind dauerhaft im DJ-Menü sichtbar, unabhängig von alten gespeicherten Aktivierungswerten.
