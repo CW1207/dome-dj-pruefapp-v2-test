@@ -23,3 +23,6 @@ Dateien aus diesem ZIP **direkt ins Stammverzeichnis** des bestehenden GitHub-Pa
 
 - Das Datumsfeld ist vor der Übernahme des Arbeitsplatzes wieder bedienbar.
 - Alle vier Bereiche sind dauerhaft im DJ-Menü sichtbar, unabhängig von alten gespeicherten Aktivierungswerten.
+
+
+V2.3.3: Datumsfeld bleibt auch nach Arbeitsplatzübernahme bedienbar. Wechsel zu anderem Veranstaltungstag bewahrt bestehenden Bogen.
