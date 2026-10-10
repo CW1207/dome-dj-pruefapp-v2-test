@@ -1,23 +1,22 @@
-# Dome DJ-Prüfapp – Version 2 (lokaler Entwicklungsstand)
+# Dome DJ-Prüfapp V2.1 – interner Teststand
 
-Diese Version baut auf dem Originalprototyp auf und behält die IndexedDB `dome-dj-check` sowie die vorhandenen Kontrollbögen bei.
+Ausgehend von V2, mit unverändertem IndexedDB-Namen `dome-dj-check` und unveränderten Stores. Vor dem Update beide JSON-Exporte sichern.
 
-## Neu
-- Bestätigte Bereichsübernahme pro Kontrollbogen; Wechsel von Bereich/Datum danach gesperrt.
-- Abgeschlossene Kontrollbögen im normalen App-Ablauf dauerhaft schreibgeschützt.
-- Lokaler Equipment-Katalog mit eindeutigen Gerätenummern und Zuordnung zu Main Stage, Main FOH, Stadl und La Vie.
-- Main FOH standardmäßig im DJ-Auswahlmenü deaktiviert, aber im Admin-Testbereich aktivierbar.
-- Manuelle Setup-Aktualisierung offener Bögen; Ergebnisse unveränderter Geräte bleiben erhalten.
-- Import/Export von Equipment-Konfigurationen als JSON.
-- Weiterhin offlinefähig mit lokaler Speicherung.
+## Änderungen
+- Abschluss archiviert den Bogen sofort, sperrt ihn und kehrt zur Kontrolle zurück. Bei Defekten wird die E-Mail-Vorbereitung **freiwillig** angeboten; der tatsächliche Versand bleibt manuell.
+- Mehrere Bögen am selben Datum/Arbeitsplatz sind lokal möglich (neue eindeutige Bogen-IDs). Vorhandene V1/V2-Bögen bleiben lesbar. Offene Bögen werden beim Aufruf weitergeführt.
+- Lokales Archiv zeigt getrennte Gruppen „Mit Defekten“ / „Ohne Defekte“ (nur abgeschlossene Bögen). Diese Gruppierung bereitet die spätere Nextcloud-Ordnerstruktur vor, legt aber keine Nextcloud-Ordner an.
+- Frühere Prüfungen entfernter Geräte werden unter „Setupänderungen während der Schicht“ sichtbar; bestehende V2-Änderungsvermerke werden angezeigt.
+- Admin kann Gerätebezeichnung und Kategorie nachträglich bearbeiten. Die Gerätenummer bleibt in dieser Version unverändert, um bestehende Referenzen zu schützen.
+- Ein Gerät kann nicht mehr über die Setup-Verwaltung gleichzeitig zwei Arbeitsplätzen zugeordnet werden.
+- Service-Worker-Cache-Version aktualisiert.
 
-## Grenzen dieses Teststands
-- **Keine Nextcloud-Anbindung**; Admin-Änderungen sind nur auf dem aktuellen Gerät sichtbar, außer bei manuellem Konfigurationsimport.
-- **Kein echter Admin-Zugriffsschutz**. Der Admin-Reiter ist ausdrücklich nur für Tests gedacht, nicht für den produktiven Einsatz durch DJs.
-- Geräte aus dem ursprünglichen Prototyp wurden mangels echter Inventarnummern mit vorläufigen Kennungen `ALT-001` usw. angelegt. Diese vor der Nutzung durch echte Nummern ersetzen.
-- Bestehende V1-Bögen bleiben in ihrem bisherigen Format; die Sperre wird anhand des Abschlusszeitpunkts angewandt.
-- Keine PDF-Erstellung und kein zentraler Upload; JSON-Sicherung bleibt vorhanden.
-- Keine zuverlässige Identitätsprüfung und kein geräteübergreifender Schutz gegen Doppelbelegung.
+## Grenzen und Sicherheit
+- Weiterhin **nur interner Teststand**. Admin- und Archiv-Reiter sind öffentlich zugänglich, wenn die App über GitHub Pages veröffentlicht wird. Noch keine geschützte DJ-Oberfläche, kein Authentifizierungsdienst und keine Nextcloud-Anbindung. Keine realen personenbezogenen oder vertraulichen Betriebsdaten verwenden.
+- Daten werden ausschließlich im jeweiligen Browser gespeichert; keine automatische Übertragung zwischen Geräten.
+- Kein PDF-Export und keine serverseitige Archivierung.
+- Der E-Mail-Empfänger wird lokal in Einstellungen gespeichert; eine E-Mail wird nur im Mailprogramm vorbereitet, nicht automatisch versendet.
+- Konfigurationsexport bleibt im Format `dome-equipment-v2`, um mit bestehenden V2-Sicherungen kompatibel zu sein.
 
-## Testhinweise
-App über HTTPS oder localhost ausliefern, nicht direkt über `file://` starten. Vor dem Test mit vorhandenen Daten eine JSON-Sicherung der V1 anlegen. Nach dem Update zuerst vorhandene Archivbögen und die Offlinefunktion prüfen. Ein abgeschlossener Bogen lässt sich im normalen UI nicht bearbeiten.
+## Installation / Test
+Dateien **direkt im GitHub-Repository-Hauptverzeichnis** hochladen (`index.html` muss im Root liegen), dann GitHub Pages über `main` / `(root)` bereitstellen. Vor dem Test beide JSON-Exporte sicher aufbewahren. Nach Aktualisierung ggf. Seite neu laden; die Offline-App aktualisiert sich über den Service Worker.
