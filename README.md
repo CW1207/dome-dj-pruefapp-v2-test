@@ -1,22 +1,18 @@
-# Dome DJ-Prüfapp V2.1 – interner Teststand
+# Dome DJ-Prüfapp V2.2 – interner Teststand
 
-Ausgehend von V2, mit unverändertem IndexedDB-Namen `dome-dj-check` und unveränderten Stores. Vor dem Update beide JSON-Exporte sichern.
+## Änderungen gegenüber V2.1
+- Admin: Arbeitsplatz-Setup zuerst; Gerätekatalog darunter standardmäßig eingeklappt.
+- Interne technische Gerätekennungen in den Bedienoberflächen ausgeblendet. Tatsächliche Gerätenummer separat bearbeitbar, auch leer möglich. Vorhandene `ALT-...`-Kennungen werden bei Übernahme nicht als echte Gerätenummer behandelt. Alte, manuell vergebene Kennungen bleiben als tatsächliche Nummer erhalten, bis sie geändert werden.
+- Neue Geräte bekommen zufällige technische Kennungen im Hintergrund. Die technische Kennung vorhandener Geräte bleibt für die Zuordnungen erhalten.
+- Gerätebemerkungen sind unabhängig vom Prüfstatus möglich; bei Defekten weiterhin Pflicht.
+- Wechsel aus einer archivierten Leseansicht zurück zur Kontrolle setzt die Auswahl zurück; „Zur Arbeitsplatzwahl“ ebenfalls.
+- Veranstaltungstag = Datum des Veranstaltungsbeginns; nach Mitternacht bei Bedarf manuell einstellen.
+- Für einen weiteren Kontrollbogen am selben Arbeitsplatz/Veranstaltungstag wird beim Übernehmen gewarnt und eine verpflichtende Begründung abgefragt. Die Begründung erscheint im Kontrollbogen und im Archiv.
+- JSON-Import akzeptiert auch die eindeutigen V2.1-Bogen-IDs. Vorhandene Datensätze werden beim Import nicht überschrieben.
+- Neuer Offline-Cache-Name.
 
-## Änderungen
-- Abschluss archiviert den Bogen sofort, sperrt ihn und kehrt zur Kontrolle zurück. Bei Defekten wird die E-Mail-Vorbereitung **freiwillig** angeboten; der tatsächliche Versand bleibt manuell.
-- Mehrere Bögen am selben Datum/Arbeitsplatz sind lokal möglich (neue eindeutige Bogen-IDs). Vorhandene V1/V2-Bögen bleiben lesbar. Offene Bögen werden beim Aufruf weitergeführt.
-- Lokales Archiv zeigt getrennte Gruppen „Mit Defekten“ / „Ohne Defekte“ (nur abgeschlossene Bögen). Diese Gruppierung bereitet die spätere Nextcloud-Ordnerstruktur vor, legt aber keine Nextcloud-Ordner an.
-- Frühere Prüfungen entfernter Geräte werden unter „Setupänderungen während der Schicht“ sichtbar; bestehende V2-Änderungsvermerke werden angezeigt.
-- Admin kann Gerätebezeichnung und Kategorie nachträglich bearbeiten. Die Gerätenummer bleibt in dieser Version unverändert, um bestehende Referenzen zu schützen.
-- Ein Gerät kann nicht mehr über die Setup-Verwaltung gleichzeitig zwei Arbeitsplätzen zugeordnet werden.
-- Service-Worker-Cache-Version aktualisiert.
+## Grenzen
+Nur lokaler Teststand auf GitHub Pages: Admin-Bereich und Archiv **nicht zugriffsgeschützt**. Keine zentrale Synchronisation, keine Nextcloud-Anbindung und kein PDF-Export. Keine echten sensiblen Daten auf öffentlich zugänglichen Testgeräten verwenden. Warnung zu bereits vorhandenem Bogen prüft **nur den lokalen Browser**, nicht andere Smartphones.
 
-## Grenzen und Sicherheit
-- Weiterhin **nur interner Teststand**. Admin- und Archiv-Reiter sind öffentlich zugänglich, wenn die App über GitHub Pages veröffentlicht wird. Noch keine geschützte DJ-Oberfläche, kein Authentifizierungsdienst und keine Nextcloud-Anbindung. Keine realen personenbezogenen oder vertraulichen Betriebsdaten verwenden.
-- Daten werden ausschließlich im jeweiligen Browser gespeichert; keine automatische Übertragung zwischen Geräten.
-- Kein PDF-Export und keine serverseitige Archivierung.
-- Der E-Mail-Empfänger wird lokal in Einstellungen gespeichert; eine E-Mail wird nur im Mailprogramm vorbereitet, nicht automatisch versendet.
-- Konfigurationsexport bleibt im Format `dome-equipment-v2`, um mit bestehenden V2-Sicherungen kompatibel zu sein.
-
-## Installation / Test
-Dateien **direkt im GitHub-Repository-Hauptverzeichnis** hochladen (`index.html` muss im Root liegen), dann GitHub Pages über `main` / `(root)` bereitstellen. Vor dem Test beide JSON-Exporte sicher aufbewahren. Nach Aktualisierung ggf. Seite neu laden; die Offline-App aktualisiert sich über den Service Worker.
+## Upgrade
+Beide JSON-Exporte vorher sichern. Dateien im Root des bestehenden Testrepositorys ersetzen. IndexedDB-Name und Stores bleiben gleich. Bestehende archivierte Bögen bleiben unverändert; historische Anzeigen können noch frühere Gerätebezeichnungen enthalten. V2.2 ist noch nicht im Browser getestet.
