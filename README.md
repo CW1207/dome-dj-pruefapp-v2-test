@@ -1,23 +1,20 @@
-# Dome DJ-Prüfapp – V2.3.4 Teststand
+# Dome DJ-Prüfapp – V2.3.5 Teststand
 
-Aufbauend auf V2.3.3. Bestehende lokale IndexedDB-Kontrollbögen bleiben bei Aktualisierung derselben GitHub-Pages-Adresse und desselben Browsers erhalten. Keine automatische Synchronisierung zwischen Smartphones.
+Aufbauend auf V2.3.4. Die lokale IndexedDB-Datenbank wird nicht gelöscht oder migriert.
 
 ## Änderungen
-- Archiv: Gesamtexport aller Bögen als JSON direkt in der Archivübersicht. Sicherungsimport weiterhin unter Einstellungen.
-- Archiv: Soundcheck-Einträge und Bemerkungen zu Reinigung/Getränkeresten gut sichtbar; Archivgruppen „Mit Beanstandungen“ / „Ohne Beanstandungen“.
-- Einzelbogen: Im Archiv auf „Lesen“ klicken, unten „Diesen Bogen als PDF speichern / drucken“ wählen. Im Browser-Druckdialog „Als PDF speichern“ auswählen. Dies ist kein direkter PDF-Download; Pop-ups müssen ggf. erlaubt werden.
-- Soundcheck-Überschrift: „Schäden bereits beim Soundcheck festgestellt“.
-- Admin: Geräte direkt einem anderen Standard-Setup zuordnen; bisherige Zuordnung wird beim Speichern automatisch aufgehoben.
-- Admin: ein Feld „Gerätename (Gerätenummer)“, Kategorie als Pull-down. Interne IDs bleiben bestehen.
-- Admin: Kategorien hinzufügen, umbenennen und entfernen, sofern keine Geräte mehr zugeordnet sind.
-- Admin: breitere Darstellung auf Desktop-Bildschirmen.
-- Reinigung: gemeinsames Textfeld „Ausreden / Beanstandungen“.
+- Smartphone-Ansichten DJ und Technik/Admin. DJ blendet Archiv, Einstellungen und Admin aus; Technik/Admin bietet alle Bereiche. **Nur UI-Trennung, noch keine Zugriffssperre.**
+- Archiv: Einträge standardmäßig geschlossen, Kopfzeile mit Datum · Bereich · DJ. Aufklappen zeigt den gesamten archivierten Bogen direkt, einschließlich PDF- und ggf. E-Mail-Funktion; kein Lesen-Button.
+- Drucklayout: A4, Gerätezeilen sollen nicht mitten im Eintrag getrennt werden; längere Inhalte können mehrere Seiten belegen.
+- Admin: Zuordnungen werden sofort beim Anhaken gespeichert; Geräte werden aus anderen Bereichen entfernt.
+- Überschriften: „Kontrolle des Setup und Technik“ und „Beanstandungen Soundcheck“.
+- Keine breitere Desktop-Sonderansicht.
 
-## Installation
-Alle sieben Dateien aus dem ZIP direkt in das Stammverzeichnis des bisherigen GitHub-Pages-Repositories hochladen und vorhandene Dateien ersetzen. Vorher die lokalen Bögen unter Archiv als JSON sichern. Danach Seite aktualisieren, ggf. Strg+F5. **Nicht** Browser-Website-Daten löschen, da die Bögen lokal gespeichert werden.
+## Installation und Test
+Alle sieben Dateien aus dem ZIP ins Stammverzeichnis des bisherigen GitHub-Pages-Repositories hochladen und die bisherigen ersetzen. **Vorher das Archiv als JSON sichern.** Nach der Veröffentlichung Seite neu laden, ggf. Strg+F5. Niemals Website-Daten löschen: Darin liegen die lokalen Bögen.
 
 ## Grenzen
-- Testversion ohne geschützten Admin-Zugang, ohne Nextcloud-Anbindung und ohne geräteübergreifende Synchronisierung.
-- PDF wird über den Druckdialog erstellt, nicht automatisch im Hintergrund.
-- DJ-seitige Auswahl eines Ersatzgeräts bleibt einer späteren Version vorbehalten.
-- Bestehende offene Bögen übernehmen Setupänderungen weiterhin nur über „Setup aktualisieren“.
+- Beide Ansichten nutzen dieselbe lokale Datenbasis, keine Synchronisierung zwischen Geräten.
+- Die Technik/Admin-Ansicht ist nicht gegen unbefugte Nutzung geschützt.
+- PDF-Export über den Browserdruckdialog; Nextcloud-PDF-Ablage ist weiterhin geplant, aber noch nicht umgesetzt.
+- Das spätere getrennte Standard-Referenzsetup samt Reset sowie die Veranstaltungslogistik sind nicht Teil dieser Version.
