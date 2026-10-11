@@ -1,28 +1,23 @@
-# Dome DJ-Prüfapp – V2.3.2 Teststand
+# Dome DJ-Prüfapp – V2.3.4 Teststand
 
-Aufbauend auf V2.2. Bestehende IndexedDB-Daten bleiben erhalten, sofern dieselbe GitHub-Pages-Adresse und derselbe Browser genutzt werden.
+Aufbauend auf V2.3.3. Bestehende lokale IndexedDB-Kontrollbögen bleiben bei Aktualisierung derselben GitHub-Pages-Adresse und desselben Browsers erhalten. Keine automatische Synchronisierung zwischen Smartphones.
 
-## Neu
-- „Ausrede“ bei Reinigung und Getränkeresten anklickbar; Eingabe optional bei Ja und verpflichtend bei Nein (wie bisher die Begründung).
-- Bei technischen Geräten optionale Bemerkung per Klick einblendbar; bei Defekt verpflichtend sichtbar.
-- Archiv zeigt nur tatsächlich ausgefüllte Bemerkungen und Ausreden.
-- Archivnavigation: Klick auf die obere Registerkarte „Kontrolle“ führt aus einem geöffneten archivierten Bogen zurück zum aktuellen Kontrollbogen/Arbeitsplatz.
-- Veranstaltungstag bleibt vor Übernahme des Arbeitsplatzes über das Datumsfeld änderbar.
-- Cache-Version erhöht, damit Änderungen nach Aktualisierung geladen werden.
-
-## Noch offen
-- Kontrollierte Arbeitsplatzkorrektur nach Übernahme ist noch nicht umgesetzt. Bitte noch nicht testen.
-- Keine zentrale Synchronisierung zwischen Smartphones; alle Daten lokal im jeweiligen Browser.
+## Änderungen
+- Archiv: Gesamtexport aller Bögen als JSON direkt in der Archivübersicht. Sicherungsimport weiterhin unter Einstellungen.
+- Archiv: Soundcheck-Einträge und Bemerkungen zu Reinigung/Getränkeresten gut sichtbar; Archivgruppen „Mit Beanstandungen“ / „Ohne Beanstandungen“.
+- Einzelbogen: Im Archiv auf „Lesen“ klicken, unten „Diesen Bogen als PDF speichern / drucken“ wählen. Im Browser-Druckdialog „Als PDF speichern“ auswählen. Dies ist kein direkter PDF-Download; Pop-ups müssen ggf. erlaubt werden.
+- Soundcheck-Überschrift: „Schäden bereits beim Soundcheck festgestellt“.
+- Admin: Geräte direkt einem anderen Standard-Setup zuordnen; bisherige Zuordnung wird beim Speichern automatisch aufgehoben.
+- Admin: ein Feld „Gerätename (Gerätenummer)“, Kategorie als Pull-down. Interne IDs bleiben bestehen.
+- Admin: Kategorien hinzufügen, umbenennen und entfernen, sofern keine Geräte mehr zugeordnet sind.
+- Admin: breitere Darstellung auf Desktop-Bildschirmen.
+- Reinigung: gemeinsames Textfeld „Ausreden / Beanstandungen“.
 
 ## Installation
-Dateien aus diesem ZIP **direkt ins Stammverzeichnis** des bestehenden GitHub-Pages-Repositories laden und vorhandene Dateien überschreiben. Keine Unterordner anlegen. Danach Seite neu laden (Strg+F5), gegebenenfalls nochmals öffnen, damit der neue Service Worker aktiv wird. Vorher zur Sicherheit im Menü „Einstellungen“ alle Bögen als JSON exportieren.
+Alle sieben Dateien aus dem ZIP direkt in das Stammverzeichnis des bisherigen GitHub-Pages-Repositories hochladen und vorhandene Dateien ersetzen. Vorher die lokalen Bögen unter Archiv als JSON sichern. Danach Seite aktualisieren, ggf. Strg+F5. **Nicht** Browser-Website-Daten löschen, da die Bögen lokal gespeichert werden.
 
-## Korrektur V2.3.2
-- Alle vier Bereiche wieder aktiv: Main Stage, Main FOH, Stadl, La Vie.
-- Einmalige Migration schaltet Main FOH auch bei gespeicherter alter Konfiguration frei, ohne Gerätezuordnungen oder Kontrollbögen zu löschen. Die Aktivierungsoption wurde aus der Admin-Oberfläche entfernt.
-
-- Das Datumsfeld ist vor der Übernahme des Arbeitsplatzes wieder bedienbar.
-- Alle vier Bereiche sind dauerhaft im DJ-Menü sichtbar, unabhängig von alten gespeicherten Aktivierungswerten.
-
-
-V2.3.3: Datumsfeld bleibt auch nach Arbeitsplatzübernahme bedienbar. Wechsel zu anderem Veranstaltungstag bewahrt bestehenden Bogen.
+## Grenzen
+- Testversion ohne geschützten Admin-Zugang, ohne Nextcloud-Anbindung und ohne geräteübergreifende Synchronisierung.
+- PDF wird über den Druckdialog erstellt, nicht automatisch im Hintergrund.
+- DJ-seitige Auswahl eines Ersatzgeräts bleibt einer späteren Version vorbehalten.
+- Bestehende offene Bögen übernehmen Setupänderungen weiterhin nur über „Setup aktualisieren“.
